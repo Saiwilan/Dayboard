@@ -1,0 +1,25 @@
+import puppeteer from 'puppeteer-core';
+const browser = await puppeteer.launch({ executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', headless: 'new', args: ['--no-sandbox'] });
+const page = await browser.newPage();
+await page.setViewport({ width: 1366, height: 768 });
+await fetch('http://localhost:4000/api/settings', { method: 'PATCH', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ skyMode: 'on', theme: 'light' }) });
+await fetch('http://localhost:4000/api/page', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ page: 1 }) });
+await page.goto('http://localhost:4000/', { waitUntil: 'domcontentloaded' });
+await new Promise(r => setTimeout(r, 1500));
+console.log(await page.evaluate(() => {
+  const out = { offset: state.settings.sunOffset, realH: new Date().getHours(), realM: new Date().getMinutes() };
+  const RD = globalThis.Date;
+  globalThis.Date = class extends RD { getHours() { return 13; } getMinutes() { return 0; } };
+  const now = new Date();
+  out.stubH = now.getHours(); out.stubM = now.getMinutes(); out.ctor = now.constructor.name;
+  out.skyActive = skyActive();
+  updateSky();
+  out.sunX = document.querySelector('#sky').style.getPropertyValue('--sun-x');
+  out.skyA = document.querySelector('#sky').style.getPropertyValue('--sky-a');
+  globalThis.Date = RD;
+  return out;
+}));
+console.log('accent-ink:', await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--accent-ink')));
+console.log('active rail color:', await page.evaluate(() => getComputedStyle(document.querySelector('.rail-btn[aria-current="page"]')).color));
+await page.screenshot({ path: 'qa/shots/r4-7-day-sky.png' });
+await browser.close();

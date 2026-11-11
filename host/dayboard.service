@@ -1,0 +1,18 @@
+[Unit]
+Description=Dayboard personal dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/opt/dayboard
+ExecStart=/usr/bin/node /opt/dayboard/server.mjs
+Restart=always
+RestartSec=3
+Environment=HOST=0.0.0.0
+Environment=PORT=4000
+EnvironmentFile=/etc/dayboard/env
+MemoryHigh=160M
+MemoryMax=256M
+
+[Install]
+WantedBy=multi-user.target

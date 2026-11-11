@@ -1,0 +1,6 @@
+data/
+data.qa-old*/
+node_modules/
+qa/shots/
+*.tar
+.env
