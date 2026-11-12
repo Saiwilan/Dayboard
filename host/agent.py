@@ -8,6 +8,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 TOKEN = open('/etc/dayboard-agent/token').read().strip()
 BACKLIGHT = next(iter(sorted(glob.glob('/sys/class/backlight/*'))), '/sys/class/backlight/none')
 ENV = dict(os.environ, DISPLAY=':0', XAUTHORITY='/root/.Xauthority')
+SAVED_BRIGHT = None
 
 
 def run(args):
@@ -15,7 +16,7 @@ def run(args):
 
 
 def xset(*args):
-    run(['xset', *args])
+    return run(['xset', *args])
 
 
 def read(path):
@@ -23,6 +24,15 @@ def read(path):
         return open(path).read().strip()
     except Exception:
         return None
+
+
+def set_backlight(raw):
+    try:
+        with open(f'{BACKLIGHT}/brightness', 'w') as f:
+            f.write(str(raw))
+        return True
+    except Exception:
+        return False
 
 
 def hardware():
@@ -81,26 +91,42 @@ def status():
     q = run(['xset', 'q']).stdout
     m = run(['amixer', 'get', 'Master']).stdout
     eth, bat, temp = hardware()
-    return {'ok': True, 'brightness': bright, 'displayOn': 'Monitor is Off' not in q, 'muted': '[off]' in m,
+    return {'ok': True, 'brightness': bright, 'displayOn': 'Monitor is Off' not in q and bright != 0, 'muted': '[off]' in m,
             'ethernet': eth, 'battery': bat, 'tempC': temp}
 
 
 def cmd(b):
+    global SAVED_BRIGHT
     c = b.get('cmd')
     if c == 'brightness':
         v = max(5, min(100, int(b.get('value', 80))))
         mx = int(open(f'{BACKLIGHT}/max_brightness').read())
+        raw = max(8, round(v * mx / 100))
         with open(f'{BACKLIGHT}/brightness', 'w') as f:
-            f.write(str(max(8, round(v * mx / 100))))
+            f.write(str(raw))
+        if SAVED_BRIGHT is not None:
+            SAVED_BRIGHT = str(raw)
         return {'ok': True, 'brightness': v}
     if c == 'on':
-        xset('+dpms')
-        xset('dpms', 'force', 'on')
-        return {'ok': True}
+        d = xset('+dpms', 'dpms', 'force', 'on').returncode == 0
+        cur = read(f'{BACKLIGHT}/brightness')
+        if SAVED_BRIGHT is not None:
+            bl = set_backlight(SAVED_BRIGHT)
+            SAVED_BRIGHT = None
+        elif cur in (None, '0'):
+            mx = read(f'{BACKLIGHT}/max_brightness')
+            bl = set_backlight(round(int(mx) * 0.8)) if mx else False
+        else:
+            bl = True
+        return {'ok': d or bl, 'dpms': d, 'backlight': bl}
     if c == 'off':
-        xset('+dpms')
-        xset('dpms', 'force', 'off')
-        return {'ok': True}
+        # DPMS alone can leave an eDP backlight lit; cut it too so the panel truly sleeps
+        cur = read(f'{BACKLIGHT}/brightness')
+        if cur not in (None, '0'):
+            SAVED_BRIGHT = cur
+        d = xset('+dpms', 'dpms', 'force', 'off').returncode == 0
+        bl = set_backlight(0)
+        return {'ok': d or bl, 'dpms': d, 'backlight': bl}
     if c == 'mute':
         run(['amixer', 'set', 'Master', 'mute' if b.get('value') else 'unmute'])
         return {'ok': True}

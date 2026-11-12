@@ -1,6 +1,7 @@
 [Unit]
 Description=Dayboard display agent (brightness, DPMS, mute)
-After=graphical.target
+# graphical.target here forms a boot ordering cycle; systemd deletes the start job
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/python3 /opt/dayboard-agent/agent.py
