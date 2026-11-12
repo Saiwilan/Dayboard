@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dayboard — a quiet home for your spare display</title>
+<meta name="description" content="Dayboard turns any spare screen into a calm day planner: clock, tasks, schedule, alarms, focus timer and a sky that keeps time. Zero dependencies, LAN only, phone remote included.">
+<link rel="stylesheet" href="site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231A1C21'/%3E%3Cpath d='M8 20a8 8 0 0 1 16 0' fill='none' stroke='%23D7F452' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Dayboard home">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 16a7 7 0 0 1 14 0" stroke="#D7F452" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+      Dayboard
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#features" data-spy="features">Features</a>
+      <a href="#film" data-spy="film">Film</a>
+      <a href="#about" data-spy="about">About</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="docs.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        View docs</a>
+      <a class="btn btn-outline" href="https://github.com/Saiwilan/Dayboard" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Star on GitHub</a>
+      <a class="btn btn-solid" href="https://github.com/Saiwilan/Dayboard/archive/refs/heads/main.zip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        Download</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-panel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+<div class="mobile-panel" id="mobile-panel">
+  <a href="#features" data-spy="features">Features</a>
+  <a href="#film" data-spy="film">Film</a>
+  <a href="#about" data-spy="about">About</a>
+  <a href="docs.html">View docs</a>
+  <a class="btn btn-outline" href="https://github.com/Saiwilan/Dayboard" target="_blank" rel="noopener">Star on GitHub</a>
+  <a class="btn btn-solid" href="https://github.com/Saiwilan/Dayboard/archive/refs/heads/main.zip">Download</a>
+</div>
+
+<main id="top">
+  <!-- ============ hero ============ -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div><div class="blob blob-4"></div>
+    </div>
+    <div class="wrap hero-in">
+      <div class="hero-row rise d1">
+        <h1>A <em>quiet</em> home for<br>your spare display.</h1>
+        <p class="hero-aside">Dayboard turns the screen you already own into a calm day planner — clock, tasks, schedule, alarms, focus timer, and a sky that keeps time. Keyboard on the desk, phone in your pocket, everything in sync.</p>
+      </div>
+      <div class="hero-cta rise d2">
+        <a class="btn btn-solid" href="docs.html#install">Get Dayboard</a>
+        <a class="btn btn-outline" href="https://github.com/Saiwilan/Dayboard" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Star on GitHub</a>
+      </div>
+    </div>
+    <div class="hero-band">
+      <div class="band-flow" aria-hidden="true"></div>
+      <div class="stage rise d3">
+        <div class="monitor">
+          <div class="monitor-screen">
+            <img src="../assets/sun-path.gif" alt="Dayboard's sky gradient travelling from dawn to dusk across a day" width="1920" height="1080">
+          </div>
+        </div>
+        <div class="monitor-stand" aria-hidden="true"></div>
+        <div class="monitor-base" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ runs-on marquee ============ -->
+  <div class="marquee" aria-label="Runs on">
+    <div class="marquee-track">
+      <span>Proxmox VE</span><span>Debian LXC</span><span>Raspberry Pi</span><span>Docker</span><span>old laptops</span><span>spare panels</span><span>any browser</span><span>your homelab</span>
+      <span aria-hidden="true">Proxmox VE</span><span aria-hidden="true">Debian LXC</span><span aria-hidden="true">Raspberry Pi</span><span aria-hidden="true">Docker</span><span aria-hidden="true">old laptops</span><span aria-hidden="true">spare panels</span><span aria-hidden="true">any browser</span><span aria-hidden="true">your homelab</span>
+    </div>
+  </div>
+
+  <!-- ============ features ============ -->
+  <section class="sec" id="features">
+    <div class="wrap features-shell">
+      <div class="features-left rv">
+        <h2>Everything the day needs, <em>nothing it doesn't.</em></h2>
+        <p>Six pages, one calm surface. Built to be read from a metre away and operated from across the room — or from your phone.</p>
+        <a class="text-link" href="docs.html#getting-started">Read the docs
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="f-grid">
+        <article class="f-card f-night rv">
+          <div class="f-media"><img src="../assets/night-sky.gif" alt="Night sky with twinkling stars, a shooting star and aurora" loading="lazy" width="1920" height="1080"></div>
+          <h3>Night, properly dark</h3>
+          <p>After sunset the sky hands over to twinkling stars, the odd shooting star, and aurora curtains when you least expect them.</p>
+        </article>
+        <article class="f-card f-remote rv">
+          <div class="f-media"><img src="../assets/remote-phone.png" alt="Phone remote interface in a phone frame" loading="lazy" width="466" height="932"></div>
+          <h3>Your phone is the remote</h3>
+          <p>Open <b>/remote</b> on the same Wi-Fi. Add tasks, snooze alarms, switch pages — the display follows live, and vice versa.</p>
+        </article>
+        <article class="f-card f-alarm rv">
+          <div class="f-alarm-text">
+            <span class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+            <h3>Alarms you can't ignore</h3>
+            <p>Full-screen and solid, with custom ringtones. Space to dismiss, Z to snooze, auto-snooze when you walk away.</p>
+            <span class="pill">Space to dismiss</span>
+          </div>
+          <div class="f-media"><img src="../assets/alarm.png" alt="Full-screen alarm overlay with a big clock and dismiss hint" loading="lazy" width="1920" height="1080"></div>
+        </article>
+        <article class="f-card f-focus rv">
+          <div class="focus-ring" aria-hidden="true">
+            <svg viewBox="0 0 80 80" fill="none"><circle class="bg" cx="40" cy="40" r="36" stroke-width="6"/><circle class="fg" cx="40" cy="40" r="36" stroke-width="6"/></svg>
+            <b>25:00</b>
+          </div>
+          <h3>Focus, gently</h3>
+          <p>A pomodoro that minds its manners: configurable cycles, real breaks, and a log of every session.</p>
+        </article>
+        <article class="f-card f-lab rv">
+          <h3>Homelab-aware</h3>
+          <p>With the optional host agent, Dayboard watches the machine it lives on — and reaches out to your phone when something changes.</p>
+          <div class="lab-row">
+            <div class="lab-item">
+              <span class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="9" width="20" height="8" rx="2"/><path d="M6 13h.01M10 13h.01M14 13h.01M18 13h.01"/></svg></span>
+              <div><b>Ethernet</b><small>Cable pulled → alert on the display and your phone.</small></div>
+            </div>
+            <div class="lab-item">
+              <span class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2"/><path d="M6 11v2M10 11v2"/></svg></span>
+              <div><b>Battery</b><small>Charging stopped → a gentle heads-up, auto-dismissed.</small></div>
+            </div>
+            <div class="lab-item">
+              <span class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0z"/></svg></span>
+              <div><b>Temperature</b><small>Running hot → alert before the fan drama starts.</small></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ launch film ============ -->
+  <section class="sec film" id="film">
+    <div class="wrap">
+      <div class="sec-head center rv">
+        <span class="eyebrow">See the launch video</span>
+        <h2>The first look, <em>coming soon.</em></h2>
+      </div>
+      <div class="film-frame rv" role="img" aria-label="Launch video placeholder — premiering soon">
+        <div class="film-empty">
+          <span class="film-clap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 6L3 11l-.9-3.2a2 2 0 0 1 1.4-2.5l13.5-3.6a2 2 0 0 1 2.4 1.4z"/><path d="M6.2 5.3l3.1 3.9M12.4 3.6l3.1 4M3 11h18v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+          <h3>Premiere pending</h3>
+          <p>The launch film is in the edit bay. Check back after the premiere — the player will live right here.</p>
+          <span class="chip film-chip">16:9 · coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ about ============ -->
+  <section class="sec" id="about">
+    <div class="wrap about-grid">
+      <div class="about-left rv">
+        <span class="eyebrow">Made for homelabbers, by a homelabber</span>
+        <h2>Hi, I'm <em>Sai.</em></h2>
+        <div class="avatar" aria-hidden="true">S</div>
+        <div class="about-cta">
+          <a class="btn btn-solid" href="https://github.com/Saiwilan/Dayboard" target="_blank" rel="noopener">Star the repo</a>
+          <a class="btn btn-outline" href="docs.html">Read the docs</a>
+        </div>
+      </div>
+      <div class="about-prose rv">
+        <p>I'm a homelabber too. I love messing around with <b>servers, Linux and AI tools</b> — the kind of person whose idea of a fun evening is reprovisioning a container that was working perfectly fine.</p>
+        <p>I had a <b>spare display</b> lying around. A perfectly good panel with nothing to do. So I did what any reasonable hobbyist does: I gave it a job. Dayboard started as a weekend experiment and slowly became the thing I actually look at every morning.</p>
+        <p>I build things with AI for fun — <b>vibecoding</b>, rabbit holes, half the ideas dying in a branch and the good ones escaping into production. My production is a Proxmox box humming in the corner, but still. Dayboard is one of the escapees.</p>
+        <p>If you've got a spare screen and a soft spot for calm software, this is for you. Star it, fork it, break it, send it back better.</p>
+        <div class="lab-notes">
+          <h3>Currently in the lab</h3>
+          <ul>
+            <li><i style="background:var(--mint)"></i> A Proxmox node in an old laptop</li>
+            <li><i style="background:var(--sky)"></i> Bunch of Linux and Windows servers, sandboxes</li>
+            <li><i style="background:var(--lav)"></i> A separate lab network</li>
+            <li><i style="background:var(--butter)"></i> Active Directory and SOC lab with bunch of users</li>
+            <li><i style="background:var(--pink)"></i> Some self-hosted apps</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ footer ============ -->
+<footer class="footer">
+  <div class="footer-flow" aria-hidden="true"></div>
+  <div class="footer-glow fg-1" aria-hidden="true"></div>
+  <div class="footer-glow fg-2" aria-hidden="true"></div>
+  <div class="wrap footer-in">
+    <h2>Make technology fun again!</h2>
+    <p class="crafted">crafted with 💖 by sai, qoder and Qwen 4</p>
+    <div class="socials">
+      <a href="#" data-soon="X" aria-label="Sai on X (link coming soon)" title="X — link coming soon">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1.6 2h6.4l4.4 5.9L18.9 2zm-1.1 18h1.7L7.1 3.9H5.3L17.8 20z"/></svg>
+      </a>
+      <a href="#" data-soon="GitHub" aria-label="Sai on GitHub (link coming soon)" title="GitHub — link coming soon">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.53-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12v3.14c0 .3.21.66.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+      </a>
+      <a href="#" data-soon="Instagram" aria-label="Sai on Instagram (link coming soon)" title="Instagram — link coming soon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+      <a href="#" data-soon="YouTube" aria-label="Sai on YouTube (link coming soon)" title="YouTube — link coming soon">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.5 15.5v-7l6.3 3.5-6.3 3.5z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <a class="to-top" href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="site.js"></script>
+</body>
+</html>
